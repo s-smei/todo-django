@@ -1,0 +1,11 @@
+{% if todo_list %}
+    <div class="list-group bg-info">
+        {% for todo in todo_list %}
+            <a class="list-group-item list-group-item-info"
+               href="">
+                {{ todo }}
+                <span class="badge">{{ todo.element_set.count }}</span>
+            </a>
+        {% endfor %}
+    </div>
+{% endif %}
