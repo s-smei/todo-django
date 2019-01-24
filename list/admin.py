@@ -4,14 +4,14 @@ from __future__ import unicode_literals
 from django.contrib import admin
 
 # Register your models here.
-from .models import Todo, Element
+from .models import List, Item
 
 
-@admin.register(Todo)
-class TodoAdmin(admin.ModelAdmin):
+@admin.register(List)
+class ListAdmin(admin.ModelAdmin):
     list_display = ('id', 'owner', 'name')
 
 
-@admin.register(Element)
+@admin.register(Item)
 class ElementAdmin(admin.ModelAdmin):
-    list_display = ('id', 'todo', 'name', 'is_finished')
+    list_display = ('id', 'list', 'name', 'is_finished')

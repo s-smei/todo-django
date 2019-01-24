@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{%block title %}
+    {{ list }}
+{% endblock title %}
+
+
+{% block content %}
+    <h2 class="text_primary">{{ list.name }} by {{ list.owner }}</h2>
+    <div class="list-group bg-info">
+        {% for item in list.item_set.all %}
+            <p class="list-group-item list-group-item-info">{{ item }}</p>
+        {% endfor %}
+        {% if form %}
+            <form method="post"
+                  action="{% url 'list_add_task' id=list.id %}"
+                  class="list-group-item list-group-item-info">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+            </form>
+        {% endif %}
+    </div>
+{% endblock content %}
