@@ -1,11 +1,17 @@
 {% if todo_list %}
     <div class="list-group bg-info">
         {% for todo in todo_list %}
-            <a class="list-group-item list-group-item-info"
-               href="">
-                {{ todo }}
-                <span class="badge">{{ todo.element_set.count }}</span>
-            </a>
+            <p class="list-group-item list-group-item-info">
+                <a href="{{ todo.get_absolute_url }}">
+                    {{ todo }}
+                </a>
+                <a class="badge"
+                   href="{% url 'list_todo_delete' todo.id %}">
+                    Del
+                </a>
+                <span class="badge">{{ todo.item_set.count }}</span>
+            </p>
+
         {% endfor %}
     </div>
 {% endif %}
