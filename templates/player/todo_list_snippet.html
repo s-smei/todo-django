@@ -9,7 +9,7 @@
                    href="{% url 'list_todo_delete' todo.id %}">
                     Del
                 </a>
-                <span class="badge">{{ todo.item_set.count }}</span>
+                <span class="badge">{{ todo.count_active }}</span>
             </p>
 
         {% endfor %}

@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.contrib.auth.views import LogoutView, LoginView
 
-from .views import home
+from .views import home, SignUpView
 
 urlpatterns = [
     url(r'home$', home,
@@ -12,4 +12,7 @@ urlpatterns = [
     url(r'logout$',
         LogoutView.as_view(),
         name="player_logout"),
+    url(r'signup$',
+        SignUpView.as_view(),
+        name='player_signup')
 ]
