@@ -36,9 +36,16 @@ class List(models.Model):
         )
 
     def __str__(self):
-        return "{0} list by {1}".format(
-            self.name, self.owner
+        return "{0}".format(
+            self.name
         )
+
+    def count_active(self):
+        count = 0
+        for item in self.item_set.all():
+            if not item.is_finished:
+                count += 1
+        return count
 
 
 class Item(models.Model):
@@ -52,4 +59,4 @@ class Item(models.Model):
 
     def __str__(self):
         status = 'finished' if self.is_finished else 'in progress'
-        return "{0}   {1}".format(self.name, status)
+        return "{0}".format(self.name)

@@ -5,12 +5,39 @@
     {{ list }}
 {% endblock title %}
 
+{% block styling %}
+    {{ block.super }}
+    <style type="text/css">
+        .task-in_progress {
+        }
+        .task-finished {
+            background-color: #c8e5bc;
+            text-decoration:line-through;
+        }
+    </style>
+{% endblock styling %}
 
 {% block content %}
     <h2 class="text_primary">{{ list.name }} by {{ list.owner }}</h2>
     <div class="list-group bg-info">
         {% for item in list.item_set.all %}
-            <p class="list-group-item list-group-item-info">{{ item }}</p>
+            <p class="list-group-item list-group-item-info">
+                <a href="{% url 'list_task_change_status' item.id %}">
+                    {%  if item.is_finished %}
+                        <span class="task-finished">
+                            {{ item }}
+                        </span>
+                    {% else %}
+                        <span class="task-in_progress">
+                            {{ item }}
+                        </span>
+                    {% endif %}
+                </a>
+                <a class="badge"
+                   href="{% url 'list_task_delete' item.id %}">
+                    Del
+                </a>
+            </p>
         {% endfor %}
         {% if form %}
             <form method="post"
