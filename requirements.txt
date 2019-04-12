@@ -1,2 +1,2 @@
-django==1.11.17
+django==1.11.19
 django-crispy-forms
