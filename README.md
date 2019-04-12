@@ -1,9 +1,10 @@
+
 User manual
 ---
 
 to clone project:
 ```bash
-git clone https://gitlab.com/ssmei/todo-django
+git clone https://github.com/s-smei/todo-django
 ```
 
 to configure project:
